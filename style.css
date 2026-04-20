@@ -1227,11 +1227,11 @@ a {
 }
 
 .montpellier-bg {
-    background-image: url('https://aquabike-nextjs-wrvn.vercel.app/images/bassin.png');
+    background-image: url('Photos/bassin.png');
 }
 
 .castelnau-bg {
-    background-image: url('https://aquabike-nextjs-wrvn.vercel.app/images/hero-castelnau.jpg');
+    background-image: url('Photos/hero_castelnau.jpg');
 }
 
 @media (max-width: 768px) {
