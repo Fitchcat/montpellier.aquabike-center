@@ -1123,3 +1123,127 @@ a {
         padding: 1.2rem 2rem;
     }
 }
+
+/* ==========================================================================
+   Centres Section (Deux espaces, une même passion)
+   ========================================================================== */
+.centres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.centre-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 28px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+}
+
+.centre-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.centre-card:hover .card-image {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.7), transparent 70%);
+    opacity: 0.8;
+}
+
+.card-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--clr-aqua-dark);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 180, 216, 0.3);
+}
+
+.card-content {
+    padding: 2.5rem;
+}
+
+.card-content h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--clr-deep-water);
+    margin-bottom: 0.8rem;
+    transition: var(--transition);
+}
+
+.centre-card:hover .card-content h3 {
+    color: var(--clr-aqua-dark);
+}
+
+.card-content p {
+    color: var(--clr-text-light);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.card-address {
+    font-size: 0.95rem;
+    color: var(--clr-text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.8;
+}
+
+.montpellier-bg {
+    background-image: url('https://aquabike-nextjs-wrvn.vercel.app/images/centres/montpellier.jpg');
+}
+
+.castelnau-bg {
+    background-image: url('https://aquabike-nextjs-wrvn.vercel.app/images/centres/castelnau.jpg');
+}
+
+@media (max-width: 768px) {
+    .centres-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.5rem;
+    }
+}
