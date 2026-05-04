@@ -120,114 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
-Antigravity
-
-// ─────────────────────────────────────────────────────────────
-// GA4 — Tracking des clics CTA (boutons de réservation)
-// À coller à la FIN de votre fichier script.js
-// ─────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function () {
- 
-    // Sélectionne tous les liens pointant vers la plateforme de réservation
-    var ctaButtons = document.querySelectorAll('a[href*="member-app.deciplus.pro"]');
- 
-    ctaButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
- 
-            // Identifie la section parente pour savoir d'où vient le clic
-            var parent = btn.closest('section, header, footer');
-            var location = 'inconnu';
-            if (parent) {
-                location = parent.id || parent.tagName.toLowerCase();
-            }
- 
-            // Texte du bouton (icônes FontAwesome exclues)
-            var rawText = btn.innerText.trim().replace(/\s+/g, ' ');
- 
-            // Envoi de l'événement à GA4
-            if (typeof gtag === 'function') {
-                gtag('event', 'cta_reserver', {
-                    button_text: rawText,           // ex: "Réserver", "RÉSERVER MA SÉANCE OFFERTE"
-                    cta_location: location,         // ex: "header", "home", "offer", "pricing"
-                    page_location: window.location.href,
-                    page_title: document.title
-                });
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
             }
         });
-    });
- 
-});
-Antigravity
 
-// ─────────────────────────────────────────────────────────────
-// GA4 — Tracking des clics CTA (boutons de réservation)
-// À coller à la FIN de votre fichier script.js
-// ─────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function () {
- 
-    // Sélectionne tous les liens pointant vers la plateforme de réservation
-    var ctaButtons = document.querySelectorAll('a[href*="member-app.deciplus.pro"]');
- 
-    ctaButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
- 
-            // Identifie la section parente pour savoir d'où vient le clic
-            var parent = btn.closest('section, header, footer');
-            var location = 'inconnu';
-            if (parent) {
-                location = parent.id || parent.tagName.toLowerCase();
-            }
- 
-            // Texte du bouton (icônes FontAwesome exclues)
-            var rawText = btn.innerText.trim().replace(/\s+/g, ' ');
- 
-            // Envoi de l'événement à GA4
-            if (typeof gtag === 'function') {
-                gtag('event', 'cta_reserver', {
-                    button_text: rawText,           // ex: "Réserver", "RÉSERVER MA SÉANCE OFFERTE"
-                    cta_location: location,         // ex: "header", "home", "offer", "pricing"
-                    page_location: window.location.href,
-                    page_title: document.title
-                });
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
             }
         });
-    });
- 
+    }
 });
-// ─────────────────────────────────────────────────────────────
-// GA4 — Tracking des clics CTA (boutons de réservation)
-// À coller à la FIN de votre fichier script.js
-// ─────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function () {
-
-    // Sélectionne tous les liens pointant vers la plateforme de réservation
-    var ctaButtons = document.querySelectorAll('a[href*="member-app.deciplus.pro"]');
-
-    ctaButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-
-            // Identifie la section parente pour savoir d'où vient le clic
-            var parent = btn.closest('section, header, footer');
-            var location = 'inconnu';
-            if (parent) {
-                location = parent.id || parent.tagName.toLowerCase();
-            }
-
-            // Texte du bouton (icônes FontAwesome exclues)
-            var rawText = btn.innerText.trim().replace(/\s+/g, ' ');
-
-            // Envoi de l'événement à GA4
-            if (typeof gtag === 'function') {
-                gtag('event', 'cta_reserver', {
-                    button_text: rawText,           // ex: "Réserver", "RÉSERVER MA SÉANCE OFFERTE"
-                    cta_location: location,         // ex: "header", "home", "offer", "pricing"
-                    page_location: window.location.href,
-                    page_title: document.title
-                });
-            }
-        });
-    });
-
-});
-
+>>>>>>> 766d167 (Mise à jour du site)
