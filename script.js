@@ -121,4 +121,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
+// GA4 CTA Tracking
+document.addEventListener('DOMContentLoaded', function () {
+    var ctaButtons = document.querySelectorAll('a[href*="member-app.deciplus.pro"]');
+    ctaButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var parent = btn.closest('section, header, footer');
+            var location = parent ? (parent.id || parent.tagName.toLowerCase()) : 'inconnu';
+            if (typeof gtag === 'function') {
+                gtag('event', 'cta_reserver', {
+                    button_text: btn.innerText.trim().replace(/\s+/g, ' '),
+                    cta_location: location,
+                    page_location: window.location.href
+                });
+            }
+        });
+    });
+});
+Ensuite Commit changes en bas → Vercel redéploie → et dans quelques minutes l'événement cta_reserver apparaîtra dans GA4 dès le premier clic sur "Réserver".
