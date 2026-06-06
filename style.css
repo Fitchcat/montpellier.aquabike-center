@@ -342,8 +342,9 @@ a {
 }
 
 .header:not(.scrolled) .nav-link {
-    color: var(--clr-deep-water);
+    color: var(--clr-white);
     font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .header.scrolled .nav-link {
@@ -389,9 +390,10 @@ a {
 .mobile-menu-btn span {
     width: 30px;
     height: 3px;
-    background: var(--clr-ocean-blue);
+    background: var(--clr-white);
     transition: var(--transition);
     border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .header.scrolled .mobile-menu-btn span {
