@@ -333,7 +333,9 @@ a {
 
 .brand-logo {
     height: 160px; /* Augmenté de 120px à 160px */
-    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
     transition: var(--transition);
 }
 
@@ -354,6 +356,7 @@ a {
 .nav-links {
     display: flex;
     gap: 2rem;
+    margin: 0 auto;
 }
 
 .nav-link {
@@ -411,7 +414,7 @@ a {
     justify-content: center;
     position: relative;
     text-align: center;
-    padding: 0 2rem;
+    padding: 160px 2rem 0;
     overflow: hidden;
 }
 
@@ -605,7 +608,7 @@ a {
 
 .activity-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     position: relative;
     z-index: 2;
@@ -614,6 +617,7 @@ a {
 .activity-card-new {
     display: flex;
     flex-direction: column;
+    min-height: 550px;
 }
 
 .activity-img {
@@ -625,6 +629,16 @@ a {
 .activity-content {
     padding: 2rem;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-content .btn {
+    margin-top: auto !important;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    white-space: normal;
+    line-height: 1.2;
 }
 
 .activity-content h3 {
@@ -761,10 +775,26 @@ a {
     background: transparent;
     border: 2px solid var(--clr-aqua-dark);
     color: var(--clr-aqua-dark);
+    padding: 0.8rem 1.8rem;
 }
 
 .btn-outline:hover {
     background: var(--clr-aqua-dark);
+    color: var(--clr-white);
+}
+
+.btn-outline-light {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--clr-white);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
     color: var(--clr-white);
 }
 
@@ -1324,4 +1354,136 @@ a {
     .card-content h3 {
         font-size: 1.5rem;
     }
+}
+
+/* Modal Bodylink */
+.booking-modal {
+    visibility: hidden;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.booking-modal.show {
+    visibility: visible;
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.booking-modal-content {
+    background-color: #fff;
+    margin: 40px auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 1300px;
+    min-height: 80vh;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.bodylink-widget {
+    width: 100%;
+    min-height: 80vh;
+}
+
+.booking-modal.show .booking-modal-content {
+    transform: translateY(0);
+}
+
+.booking-modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.booking-modal-close:hover,
+.booking-modal-close:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Planning Image & Modal
+   ========================================================================== */
+.planning-image {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.planning-image:hover {
+    transform: scale(1.02);
+}
+
+.image-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 10000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+}
+
+.image-modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    border-radius: 8px;
+    animation: zoomIn 0.3s ease;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.image-modal-close:hover,
+.image-modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
 }

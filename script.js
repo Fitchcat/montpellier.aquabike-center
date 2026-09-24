@@ -121,3 +121,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Modal Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('booking-modal');
+    const closeBtn = document.querySelector('.booking-modal-close');
+    const openBtns = document.querySelectorAll('.open-booking-modal');
+
+    if (!modal) return;
+
+    function openModal(e) {
+        if (e) e.preventDefault();
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+});
+
+// Image Modal Logic for Planning
+document.addEventListener('DOMContentLoaded', () => {
+    const imgModal = document.getElementById('image-modal');
+    const imgTriggers = document.querySelectorAll('.planning-img-trigger');
+    const imgModalTarget = document.getElementById('img-modal-target');
+    const closeImgModal = document.querySelector('.image-modal-close');
+
+    if (imgModal && imgTriggers.length > 0) {
+        const openImage = (e) => {
+            if (e) e.preventDefault();
+            
+            let src = '';
+            if (e.currentTarget.tagName === 'IMG') {
+                src = e.currentTarget.src;
+            } else if (e.currentTarget.dataset.imgSrc) {
+                src = e.currentTarget.dataset.imgSrc;
+            }
+            
+            if (src) {
+                imgModalTarget.src = src;
+                imgModal.style.display = "block";
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        const closeImage = () => {
+            imgModal.style.display = "none";
+            document.body.style.overflow = '';
+            imgModalTarget.src = '';
+        };
+
+        imgTriggers.forEach(trigger => trigger.addEventListener('click', openImage));
+        
+        if (closeImgModal) closeImgModal.addEventListener('click', closeImage);
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === imgModal) {
+                closeImage();
+            }
+        });
+    }
+});
